@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #060913;
+    --bg-secondary: #0c1427;
+    --accent-glow: #00f0ff;
+    --text-primary: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: rgba(0, 240, 255, 0.25);
+  }
+
+  body.ironman-mode {
+    --bg-primary: #0a0406;
+    --bg-secondary: #17090d;
+    --accent-glow: #e62429;
+    --text-primary: #fff1f2;
+    --text-muted: #fda4af;
+    --border-color: rgba(230, 36, 41, 0.35);
+  }
+}
+
+/* Custom futuristic scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #040711;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f0ff;
+  border-radius: 3px;
+}
+.ironman-mode ::-webkit-scrollbar-thumb {
+  background: #e62429;
+}
+
+/* Scanline and HUD overlay */
+.hud-scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0, 240, 255, 0.04) 50%,
+    rgba(0, 240, 255, 0.04)
+  );
+  background-size: 100% 4px;
+}
+.ironman-mode .hud-scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(230, 36, 41, 0.05) 50%,
+    rgba(230, 36, 41, 0.05)
+  );
+  background-size: 100% 4px;
+}
+
+/* Glassmorphism Stark Card */
+.stark-glass {
+  background: rgba(10, 17, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.07);
+}
+
+.ironman-glass {
+  background: rgba(24, 8, 12, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(230, 36, 41, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(230, 36, 41, 0.12);
+}
+
+/* Glowing text effects */
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+.glow-red {
+  text-shadow: 0 0 10px rgba(230, 36, 41, 0.8), 0 0 25px rgba(255, 119, 0, 0.5);
+}
+.glow-gold {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* HUD corners */
+.hud-corner-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+.hud-corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.hud-corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+.hud-corner-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+/* Arc reactor pulse keyframe */
+@keyframes arcPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.8);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 50px rgba(0, 240, 255, 0.9), inset 0 0 35px rgba(0, 240, 255, 1);
+  }
+}
+
+.arc-pulsing {
+  animation: arcPulse 2s ease-in-out infinite;
+}
+
+/* Iron Man mode reactor pulse */
+@keyframes ironPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 35px rgba(230, 36, 41, 0.7), 0 0 60px rgba(255, 119, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 60px rgba(230, 36, 41, 1), 0 0 90px rgba(255, 119, 0, 0.7), inset 0 0 35px rgba(255, 215, 0, 1);
+  }
+}
+
+.iron-pulsing {
+  animation: ironPulse 1.8s ease-in-out infinite;
+}
+
+/* Background grid */
+.tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.ironman-mode .tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(230, 36, 41, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 36, 41, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Transformation Page-Wide Energy Warp & Wave */
+@keyframes nanotechSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pageGlitchPulse {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+    transform: scale(1);
+  }
+  30% {
+    filter: hue-rotate(180deg) brightness(1.3) contrast(1.2);
+    transform: scale(0.995);
+  }
+  60% {
+    filter: hue-rotate(90deg) brightness(1.2);
+    transform: scale(1.005);
+  }
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+    transform: scale(1);
+  }
+}
+
+.transforming-page {
+  animation: pageGlitchPulse 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.transforming-border-glow {
+  position: relative;
+}
+.transforming-border-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e62429, #ffd700, #00f0ff, #e62429);
+  background-size: 300% 300%;
+  animation: nanotechSweep 1.5s linear infinite;
+  z-index: -1;
+  opacity: 0.8;
+  filter: blur(4px);
+}
